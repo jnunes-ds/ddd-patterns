@@ -1,28 +1,35 @@
 class Customer {
+
+  private _address: string = "";
+  private _active: boolean = false;
+
   constructor(
-    private _id: number,
-    private _name: string,
-    private _address: string,
-  ) {}
-
-  get id(): number {
-    return this._id;
+    private _id: string,
+    private _name: string
+  ) {
+    this.validate();
   }
 
-  get name(): string {
-    return this._name;
+  validate() {
+    if (!this._name) throw new Error("Name is required");
+    if (!this._id) throw new Error("Invalid id");
   }
 
-  get address(): string {
-    return this._address;
-  }
-
-  set name(name: string) {
+  changeName(name: string) {
     this._name = name;
+    this.validate();
   }
 
-  set address(address: string) {
-    this._address = address;
+  activate() {
+    if (!this._address) throw new Error("Address is required");
+
+    this._active = true;
+  }
+
+  deactivate() {
+    this._active = false;
   }
 
 }
+
+const customer = new Customer("1", "John Doe");
