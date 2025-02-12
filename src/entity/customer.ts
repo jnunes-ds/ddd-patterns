@@ -1,11 +1,13 @@
+import Address from "./address";
+
 class Customer {
 
-  private _address: string = "";
+  private _address?: Address;
   private _active: boolean = false;
 
   constructor(
     private _id: string,
-    private _name: string
+    private _name: string,
   ) {
     this.validate();
   }
@@ -30,6 +32,11 @@ class Customer {
     this._active = false;
   }
 
+  set address(address: Address) {
+    this._address = address;
+  }
+
 }
 
 const customer = new Customer("1", "John Doe");
+customer.address = new Address("Main Street", 123, "Springfield", "IL", "62701");
