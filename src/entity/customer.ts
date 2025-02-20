@@ -12,9 +12,17 @@ export default class Customer {
     this.validate();
   }
 
+  getName(): string {
+    return this._name;
+  }
+
+  getActiveStatus() {
+    return {isActive: this._active};
+  }
+
   validate() {
+    if (!this._id) throw new Error("Id is required");
     if (!this._name) throw new Error("Name is required");
-    if (!this._id) throw new Error("Invalid id");
   }
 
   changeName(name: string) {
