@@ -1,6 +1,6 @@
 import Address from "./address";
 
-class Customer {
+export default class Customer {
 
   private _address?: Address;
   private _active: boolean = false;
@@ -37,6 +37,3 @@ class Customer {
   }
 
 }
-
-const customer = new Customer("1", "John Doe");
-customer.address = new Address("Main Street", 123, "Springfield", "IL", "62701");
