@@ -1,12 +1,20 @@
 export default class OrderItem {
   constructor(
     private _id: string,
+    private _productId: string,
     private _name: string,
     private _price: number,
-  ) {}
+    private _quantity: number
+  ) {
+    this.validate();
+  }
 
   get price(): number {
-    return this._price;
+    return this._price * this._quantity;
+  }
+
+  validate() {
+    if (!this._quantity || this._quantity <= 0) throw new Error("Item quantity must be grater than 0");
   }
 
   printOrderItem() {
