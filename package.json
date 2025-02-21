@@ -6,7 +6,8 @@
   "scripts": {
     "build": "rm -rf dist && npx tsc",
     "start": "node index.js",
-    "test": "jest"
+    "test": "pnpm run tsc --noEmit && jest ./src",
+    "tsc": "tsc"
   },
   "keywords": [],
   "author": "",
