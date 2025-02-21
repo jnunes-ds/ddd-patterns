@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      ts-toolbelt:
+        specifier: ^9.6.0
+        version: 9.6.0
     devDependencies:
       '@eslint/js':
         specifier: ^9.20.0
@@ -29,6 +33,9 @@ importers:
       jest:
         specifier: ^29.7.0
         version: 29.7.0(@types/node@22.13.4)(ts-node@10.9.2(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3))
+      swc-plugin-add-import-extension:
+        specifier: 1.0.0-alpha.1
+        version: 1.0.0-alpha.1
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@swc/core@1.10.18)(@types/node@22.13.4)(typescript@5.7.3)
@@ -1817,6 +1824,9 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
+  swc-plugin-add-import-extension@1.0.0-alpha.1:
+    resolution: {integrity: sha512-YSuKGlIoYJb097I3a5Z02rJeN6iFbjlg5PXfCEfRvmc93gChNBbpbU2S5G0jHbW+wqhL6JnV5oftaxX2xtZ/jg==}
+
   tar-stream@3.1.7:
     resolution: {integrity: sha512-qJj60CXt7IU1Ffyc3NJMjh6EkuCFej46zUqJ4J7pqYlThyd9bO0XBTmcOIhSzZJVWfsLks0+nle/j538YAW9RQ==}
 
@@ -1854,6 +1864,9 @@ packages:
         optional: true
       '@swc/wasm':
         optional: true
+
+  ts-toolbelt@9.6.0:
+    resolution: {integrity: sha512-nsZd8ZeNUzukXPlJmTBwUAuABDe/9qtVDelJeT/qW0ow3ZS3BsQJtNkan1802aM9Uf68/Y8ljw86Hu0h5IUW3w==}
 
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -3962,6 +3975,8 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
+  swc-plugin-add-import-extension@1.0.0-alpha.1: {}
+
   tar-stream@3.1.7:
     dependencies:
       b4a: 1.6.7
@@ -4010,6 +4025,8 @@ snapshots:
       yn: 3.1.1
     optionalDependencies:
       '@swc/core': 1.10.18
+
+  ts-toolbelt@9.6.0: {}
 
   type-check@0.4.0:
     dependencies:
