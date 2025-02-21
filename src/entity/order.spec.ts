@@ -21,14 +21,21 @@ describe("Order unit tests", () => {
   });
 
   it("should calculate total price correctly", () => {
-    const item1 = new OrderItem("item-1", "item-1", 100);
-    const item2 = new OrderItem("item-2", "item-2", 200);
+    const item1 = new OrderItem("item-1", "product-1", "item-1", 100, 2);
+    const item2 = new OrderItem("item-2", "product-2", "item-2", 200, 3);
     const order1 = new Order("123", "customer-id", [item1]);
     let total = order1.total();
 
-    expect(total).toBe(100);
+    expect(total).toBe(200);
     const order2 = new Order("123", "customer-id", [item1, item2]);
     total = order2.total();
-    expect(total).toBe(300);
+    expect(total).toBe(800);
+  });
+
+  it("should check if the item quantity is grater than 0", () => {
+    expect(() => {
+      const item1 = new OrderItem("item", "product", "item", 100, 0);
+      new Order("123", "customer-id", [item1]);
+    }).toThrowError("Item quantity must be grater than 0");
   });
 });
