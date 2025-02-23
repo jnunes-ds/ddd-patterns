@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@types/uuid": "^10.0.0",
+    "bindings": "^1.5.0",
     "reflect-metadata": "^0.2.2",
     "sequelize": "^6.37.5",
     "sequelize-typescript": "^2.1.6",
