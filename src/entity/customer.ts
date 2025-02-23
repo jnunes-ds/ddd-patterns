@@ -2,18 +2,29 @@ import Address from "./address";
 
 export default class Customer {
 
+  private _active: boolean;
+  private _rewardPoints;
   private _address?: Address;
-  private _active: boolean = false;
 
   constructor(
     private _id: string,
     private _name: string,
   ) {
+    this._active = false;
+    this._rewardPoints = 0;
     this.validate();
   }
 
-  getName(): string {
+  get name(): string {
     return this._name;
+  }
+
+  get rewardPoints(): number {
+    return this._rewardPoints;
+  }
+
+  get id(): string {
+    return this._id;
   }
 
   getActiveStatus() {
