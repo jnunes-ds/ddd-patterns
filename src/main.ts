@@ -1,7 +1,8 @@
-import Customer from "./domain/entity/customer";
-import Address from "./domain/entity/address";
-import OrderItem from "./domain/entity/order_item";
-import Order from "./domain/entity/order";
+import 'module-alias/register';
+import Customer from "@domain/entity/customer";
+import Address from "@domain/entity/address";
+import OrderItem from "@domain/entity/order_item";
+import Order from "@domain/entity/order";
 
 function main () {
   const customer = new Customer("1", "John Doe");

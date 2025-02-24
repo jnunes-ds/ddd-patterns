@@ -1,7 +1,7 @@
-import ProductRepositoryInterface from "../../domain/repository/product-repository";
+import ProductRepositoryInterface from "@domain/repository/product-repository";
 import {Promise} from "ts-toolbelt/out/Any/Promise";
-import Product from "../../domain/entity/product";
-import ProductModel from "../db/sequelize/model/product.model";
+import Product from "@domain/entity/product";
+import ProductModel from "@infra/db/sequelize/model/product.model";
 
 export default class ProductRepository
   implements ProductRepositoryInterface {

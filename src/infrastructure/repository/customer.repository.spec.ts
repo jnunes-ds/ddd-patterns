@@ -1,8 +1,8 @@
 import { Sequelize } from "sequelize-typescript";
 import CustomerRepository from "./customer.repository";
-import CustomerModel from "../db/sequelize/model/customer.model";
-import Customer from "../../domain/entity/customer";
-import Address from "../../domain/entity/address";
+import CustomerModel from "@infra/db/sequelize/model/customer.model";
+import Customer from "@domain/entity/customer";
+import Address from "@domain/entity/address";
 
 describe("Customer repository test", () => {
   let sequelize: Sequelize;
@@ -96,13 +96,13 @@ describe("Customer repository test", () => {
     const customerRepository = new CustomerRepository();
     const customer1 = new Customer("id123", "Customer 1");
     const address1 = new Address("Street 1", 1, "City 1", "State 1", "Zipcode 1");
-    customer1.Address = address1;
+    customer1.changeAddress(address1);
     customer1.addRewardPoints(10);
     customer1.activate();
 
     const customer2 = new Customer("id456", "Customer 2");
     const address2 = new Address("Street 2", 2, "City 2", "State 2", "Zipcode 2");
-    customer2.Address = address2;
+    customer2.changeAddress(address2);
     customer2.addRewardPoints(20);
 
     await customerRepository.create(customer1);
