@@ -9,8 +9,20 @@ export default class OrderItem {
     this.validate();
   }
 
+  get id(): string {
+    return this._id;
+  }
+
   get price(): number {
     return this._price * this._quantity;
+  }
+
+  get productId(): string {
+    return this._productId;
+  }
+
+  get quantity(): number {
+    return this._quantity;
   }
 
   validate() {
