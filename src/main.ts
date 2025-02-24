@@ -5,7 +5,7 @@ import Order from "./domain/entity/order";
 
 function main () {
   const customer = new Customer("1", "John Doe");
-  customer.address = new Address("Rua do beco", 123, "Brasília", "DF", "12345-678");
+  customer.Address = new Address("Rua do beco", 123, "Brasília", "DF", "12345-678");
   customer.activate();
 
   const item1 = new OrderItem("1", "product1", "Item 1", 100, 1);
