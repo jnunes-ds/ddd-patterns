@@ -6,7 +6,7 @@ describe("Customer unit tests", () => {
 
   beforeEach(() => {
     customer = new Customer("123", "John Doe");
-    customer.address = new Address("Rua do beco", 123, "Brasília", "DF", "12345-678");
+    customer.Address = new Address("Rua do beco", 123, "Brasília", "DF", "12345-678");
 
     customer.activate();
   });
@@ -35,7 +35,7 @@ describe("Customer unit tests", () => {
 
   it("Should activate customer", () => {
 
-    expect(customer.getActiveStatus())
+    expect(customer.isActive)
       .toEqual({isActive: true});
   });
 
@@ -49,7 +49,7 @@ describe("Customer unit tests", () => {
   it("Should deactivate customer", () => {
     customer.deactivate();
 
-    expect(customer.getActiveStatus())
+    expect(customer.isActive)
       .toEqual({isActive: false});
   });
 
