@@ -83,4 +83,80 @@ describe("Order Repository Unit tests", () => {
       ]
     });
   });
+
+  it("should update an order", async () => {
+    // create customer
+    const customerRepository = new CustomerRepository();
+    const customer = new Customer("c1", "Customer 1");
+    const address = new Address("Street 1", 12, "City", "State", "12345-123");
+    customer.changeAddress(address);
+    await customerRepository.create(customer);
+
+    // create product
+    const productRepository = new ProductRepository()
+    const product = new Product("p1", "Product 1", 10);
+    await productRepository.create(product);
+
+    // create order item
+    const orderItem = new OrderItem(
+      "i1",
+      product.id,
+      product.name,
+      product.price,
+      2
+    );
+
+    // create order
+    const orderRepository = new OrderRepository();
+    const order = new Order("o1", customer.id, [orderItem]);
+    await orderRepository.create(order);
+
+    //create new product
+    const newProduct = new Product("p2", "Product 2", 20);
+    await productRepository.create(newProduct);
+
+    // create new order item
+    const newOrderItem = new OrderItem(
+      "i2",
+      newProduct.id,
+      newProduct.name,
+      newProduct.price,
+      3
+    );
+
+    // update new order item to order
+    order.addOrderItem(newOrderItem);
+    await orderRepository.update(order);
+
+    // find order on repository
+    const orderModel = await OrderModel.findOne({
+        where: {id: order.id},
+        include: [{model: OrderItemModel}]
+    });
+
+    // check if order was updated
+    expect(orderModel.toJSON()).toEqual({
+      id: "o1",
+      customer_id: customer.id,
+      total: order.total(),
+      items: [
+        {
+          id: orderItem.id,
+          name: orderItem.name,
+          product_id: product.id,
+          order_id: order.id,
+          quantity: orderItem.quantity,
+          price: orderItem.price
+        },
+        {
+          id: newOrderItem.id,
+          name: newOrderItem.name,
+          product_id: newProduct.id,
+          order_id: order.id,
+          quantity: newOrderItem.quantity,
+          price: newOrderItem.price
+        }
+      ]
+    });
+  });
 });
