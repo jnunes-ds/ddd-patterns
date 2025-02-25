@@ -1,5 +1,5 @@
 import RepositoryInterface from "./repository-interface";
 import Product from "@domain/entity/product";
 
-export default interface ProductRepositoryInterface
+export default interface IProductRepository
   extends RepositoryInterface<Product> {}

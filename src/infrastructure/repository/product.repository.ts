@@ -1,10 +1,10 @@
-import ProductRepositoryInterface from "@domain/repository/product-repository";
+import IProductRepository from "@domain/repository/product-repository";
 import {Promise} from "ts-toolbelt/out/Any/Promise";
 import Product from "@domain/entity/product";
 import ProductModel from "@infra/db/sequelize/model/product.model";
 
 export default class ProductRepository
-  implements ProductRepositoryInterface {
+  implements IProductRepository {
   async create(entity: Product): Promise<void> {
     await ProductModel.create({
       id: entity.id,

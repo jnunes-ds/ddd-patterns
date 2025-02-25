@@ -66,6 +66,7 @@ describe("Order Repository Unit tests", () => {
         where: {id: order.id},
         include: ["items"]
     });
+
     expect(orderModel.toJSON()).toStrictEqual({
       id: "o1",
       customer_id: customer.id,
