@@ -199,4 +199,43 @@ describe("Order Repository Unit tests", () => {
     await expect(orderRepository.find("o1")).rejects.toThrow("Order not found");
   });
 
+  it("should find a order item", async () => {
+    // create customer
+    const customerRepository = new CustomerRepository();
+    const customer = new Customer("c1", "Customer 1");
+    const address = new Address("Street 1", 12, "City", "State", "12345-123");
+    customer.changeAddress(address);
+    await customerRepository.create(customer);
+
+    // create product
+    const productRepository = new ProductRepository()
+    const product = new Product("p1", "Product 1", 10);
+    await productRepository.create(product);
+
+    // create order item
+    const orderItem = new OrderItem(
+      "i1",
+      product.id,
+      product.name,
+      product.price,
+      2
+    );
+
+    // create order
+    const orderRepository = new OrderRepository();
+    const order = new Order("o1", customer.id, [orderItem]);
+    await orderRepository.create(order);
+
+    // find order on repository
+    const foundOrderItem = await orderRepository.findOrderItem(orderItem.id, order.id);
+
+    // check if order was found
+    expect(foundOrderItem).toEqual(orderItem);
+  })
+
+  it("should throw an error when order item not found", async () => {
+    const orderRepository = new OrderRepository();
+    await expect(orderRepository.findOrderItem("i1", "o1")).rejects.toThrow("Order item not found");
+  });
+
 });
