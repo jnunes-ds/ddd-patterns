@@ -124,4 +124,22 @@ export default class OrderRepository implements IOrderRepository {
     ));
   }
 
+  async findAll(): Promise<Order[]> {
+    const orderModel = await OrderModel.findAll({include: [{model: OrderItemModel}]});
+
+    if (!orderModel|| !orderModel.length) throw new Error("There are no orders yet.");
+
+    return orderModel.map((orderModel) => new Order(
+      orderModel.id,
+      orderModel.customer_id,
+      orderModel.items.map((item) => new OrderItem(
+        item.id,
+        item.product_id,
+        item.name,
+        item.price,
+        item.quantity
+      ))
+    ));
+  }
+
 }
