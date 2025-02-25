@@ -73,6 +73,7 @@ describe("Order Repository Unit tests", () => {
       items: [
         {
           id: orderItem.id,
+          name: orderItem.name,
           product_id: product.id,
           order_id: order.id,
           quantity: orderItem.quantity,

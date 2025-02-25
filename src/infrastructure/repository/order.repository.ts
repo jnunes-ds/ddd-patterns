@@ -10,6 +10,7 @@ export default class OrderRepository {
       total: entity.total(),
       items: entity.items.map((item) => ({
         id: item.id,
+        name: item.name,
         product_id: item.productId,
         order_id: entity.id,
         quantity: item.quantity,

@@ -26,6 +26,9 @@ export default class OrderItemModel extends Model {
   @Column({type: DataTypes.INTEGER, allowNull: false})
   declare quantity: number;
 
+  @Column({type: DataTypes.STRING, allowNull: false})
+  declare name: string;
+
   @Column({type: DataTypes.FLOAT, allowNull: false})
   declare price: number;
 }
