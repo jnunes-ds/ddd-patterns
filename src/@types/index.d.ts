@@ -6,4 +6,9 @@ declare global {
   >;
 
   type NonPrimitive = object;
+
+  type Override<T, M extends {[K in keyof Partial<T>]: unknown}> = Omit<
+    T,
+    keyof M
+  > & M;
 }
