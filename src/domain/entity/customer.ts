@@ -4,7 +4,7 @@ export default class Customer {
 
   private _active: boolean;
   private _rewardPoints;
-  private _Address?: Address;
+  private _address?: Address;
 
   constructor(
     private _id: string,
@@ -31,8 +31,8 @@ export default class Customer {
     return {isActive: this._active};
   }
 
-  get Address(): Address {
-    return this._Address;
+  get address(): Address {
+    return this._address;
   }
 
   validate() {
@@ -46,11 +46,11 @@ export default class Customer {
   }
 
   changeAddress(address: Address) {
-    this._Address = address;
+    this._address = address;
   }
 
   activate() {
-    if (!this._Address) throw new Error("Address is required");
+    if (!this._address) throw new Error("Address is required");
 
     this._active = true;
   }
@@ -63,8 +63,8 @@ export default class Customer {
     this._rewardPoints += points;
   }
 
-  set Address(address: Address) {
-    this._Address = address;
+  set address(address: Address) {
+    this._address = address;
   }
 
 }

@@ -6,7 +6,7 @@ describe("Customer unit tests", () => {
 
   beforeEach(() => {
     customer = new Customer("123", "John Doe");
-    customer.Address = new Address("Rua do beco", 123, "Brasília", "DF", "12345-678");
+    customer.address = new Address("Rua do beco", 123, "Brasília", "DF", "12345-678");
 
     customer.activate();
   });
