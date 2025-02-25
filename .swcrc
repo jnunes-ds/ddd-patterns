@@ -3,8 +3,13 @@
     "parser": {
       "syntax": "typescript",
       "tsx": false,
-      "decorators": false,
-      "dynamicImport": false
+      "decorators": true,
+      "dynamicImport": false,
+      "baseUrl": "./src", // Define o diretório base para os aliases
+      "paths": {
+        "@domain/*": ["./src/domain"],
+        "@infra/*": ["./src/infrastructure"] // Define o alias @ para o diretório src
+      }
     },
     "target": "es2020"
   },

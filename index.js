@@ -1,4 +1,4 @@
-const { main } = require('./dist/main');
+const {main} = require('./dist/main');
 
 function app() {
     main();

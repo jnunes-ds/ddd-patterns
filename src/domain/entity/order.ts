@@ -12,10 +12,31 @@ export default class Order {
     this.validate();
   }
 
+  get id(): string {
+    return this._id;
+  }
+
+  get customerId(): string {
+    return this._customerId;
+  }
+
+  get items(): OrderItem[] {
+    return this._items;
+  }
+
   validate() {
     if (!this._id) throw new Error("Order ID is required");
     if (!this._customerId) throw new Error("Customer ID is required");
     if (!this._items.length) throw new Error("Order Need to have at least one item");
+  }
+
+  addOrderItem(orderItem: OrderItem) {
+    const existingItem = this._items.find(item => item.id === orderItem.id);
+
+    if (existingItem) throw new Error("Order Item already exists");
+
+    this._items.push(orderItem);
+    this._total = this.total();
   }
 
   printOrder() {
@@ -27,6 +48,6 @@ export default class Order {
   }
 
   total(): number {
-    return this._items.reduce((acc, item) => acc + item.price, 0);
+    return this._items.reduce((acc, item) => acc + item.price * item.quantity, 0);
   }
 }

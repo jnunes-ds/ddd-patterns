@@ -30,12 +30,12 @@ describe("Customer unit tests", () => {
     customer.changeName("Jane Doe");
 
     // Assert
-    expect(customer.getName()).toBe("Jane Doe");
+    expect(customer.name).toBe("Jane Doe");
   });
 
   it("Should activate customer", () => {
 
-    expect(customer.getActiveStatus())
+    expect(customer.isActive)
       .toEqual({isActive: true});
   });
 
@@ -49,7 +49,18 @@ describe("Customer unit tests", () => {
   it("Should deactivate customer", () => {
     customer.deactivate();
 
-    expect(customer.getActiveStatus())
+    expect(customer.isActive)
       .toEqual({isActive: false});
+  });
+
+  it("should add reward points", () => {
+    const customer = new Customer("c1", "Customer 1");
+    expect(customer.rewardPoints).toBe(0);
+
+    customer.addRewardPoints(10);
+    expect(customer.rewardPoints).toBe(10);
+
+    customer.addRewardPoints(20);
+    expect(customer.rewardPoints).toBe(30);
   });
 });

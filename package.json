@@ -3,11 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "build": "rm -rf dist && npx swc src -d temp && mv temp/src dist/ && rm -rf temp",
     "start": "node index.js",
     "test": "pnpm run tsc --noEmit && jest ./src",
     "tsc": "tsc"
+  },
+  "_moduleAliases": {
+    "@domain": "dist/domain",
+    "@infra": "dist/infrastructure"
   },
   "keywords": [],
   "author": "",
@@ -23,5 +28,16 @@
     "swc-plugin-add-import-extension": "1.0.0-alpha.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@types/uuid": "^10.0.0",
+    "bindings": "^1.5.0",
+    "module-alias": "^2.2.3",
+    "reflect-metadata": "^0.2.2",
+    "sequelize": "^6.37.5",
+    "sequelize-typescript": "^2.1.6",
+    "sqlite3": "^5.1.7",
+    "ts-toolbelt": "^9.6.0",
+    "uuid": "^11.1.0"
   }
 }
