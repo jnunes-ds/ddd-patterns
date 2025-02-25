@@ -71,11 +71,26 @@ export default class OrderRepository implements IOrderRepository {
 
   }
 
+  async find(id: string): Promise<Order> {
+    const orderModel = await OrderModel.findOne({where: {id}, include: [{model: OrderItemModel}]});
+
+    if (!orderModel) throw new Error("Order not found");
+
+    return new Order(
+      orderModel.id,
+      orderModel.customer_id,
+      orderModel.items.map((item) => new OrderItem(
+        item.id,
+        item.product_id,
+        item.name,
+        item.price,
+        item.quantity
+      )
+    ));
+  }
+
   async findAll(): Promise<Order[]> {
     throw new Error("Method not implemented.");
   }
 
-  async find(id: string): Promise<Order> {
-    throw new Error("Method not implemented.");
-  }
 }
