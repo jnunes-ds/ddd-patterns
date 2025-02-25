@@ -30,6 +30,15 @@ export default class Order {
     if (!this._items.length) throw new Error("Order Need to have at least one item");
   }
 
+  addOrderItem(orderItem: OrderItem) {
+    const existingItem = this._items.find(item => item.id === orderItem.id);
+
+    if (existingItem) throw new Error("Order Item already exists");
+
+    this._items.push(orderItem);
+    this._total = this.total();
+  }
+
   printOrder() {
     console.log(`Order ID: ${this._id}`);
     console.log(`Customer ID: ${this._customerId}`);
