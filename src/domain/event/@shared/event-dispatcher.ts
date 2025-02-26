@@ -24,8 +24,8 @@ export default class EventDispatcher implements EventDispatcherInterface {
       .filter((handler) => handler !== eventHandler);
   }
 
-  unRegisterAll() {
-    throw new Error("Method not implemented.");
+  unRegisterAll(): void {
+    this.eventHandlers = {};
   }
 
   notify(event: any) {
