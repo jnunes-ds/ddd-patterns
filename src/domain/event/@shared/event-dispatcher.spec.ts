@@ -25,4 +25,14 @@ describe("Domain events tests", () => {
     expect(eventDispatcher.getEventHandlers["ProductCreatedEvent"].length).toBe(0);
   });
 
+  it("should unregister all event handlers", () => {
+    const eventDispatcher = new EventDispatcher();
+    const eventHandler = new SendEmailWhenProductIsCreatedHandler();
+
+    eventDispatcher.register("ProductCreatedEvent", eventHandler);
+    expect(eventDispatcher.getEventHandlers["ProductCreatedEvent"]).toMatchObject(eventHandler);
+
+    eventDispatcher.unRegisterAll();
+    expect(eventDispatcher.getEventHandlers["ProductCreatedEvent"]).toBeUndefined();
+  });
 });
