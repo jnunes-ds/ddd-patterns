@@ -1,37 +1,39 @@
 import EventDispatcherInterface from "@domain/event/@shared/event-dispatcher.interface";
 import EventHandlerInterface from "@domain/event/@shared/event-handler.interface";
 
+type EventHandlers = {[eventName: string]: EventHandlerInterface[]}
+
 export default class EventDispatcher implements EventDispatcherInterface {
 
-  private eventHandlers: {[eventName: string]: EventHandlerInterface[]} = {};
+  private _eventHandlers: EventHandlers = {};
 
-  get getEventHandlers(): {[eventName: string]: EventHandlerInterface[]} {
-    return this.eventHandlers;
+  get eventHandlers(): EventHandlers {
+    return this._eventHandlers;
   }
 
   register(eventName: string, eventHandler: EventHandlerInterface) {
-    if (!this.eventHandlers[eventName]) {
-      this.eventHandlers[eventName] = [];
+    if (!this._eventHandlers[eventName]) {
+      this._eventHandlers[eventName] = [];
     }
-    this.eventHandlers[eventName].push(eventHandler);
+    this._eventHandlers[eventName].push(eventHandler);
   }
 
   unregister(eventName: string, eventHandler: EventHandlerInterface): void {
-    if (!this.eventHandlers[eventName]) {
+    if (!this._eventHandlers[eventName]) {
       return void 0;
     }
-    this.eventHandlers[eventName] = this.eventHandlers[eventName]
+    this._eventHandlers[eventName] = this._eventHandlers[eventName]
       .filter((handler) => handler !== eventHandler);
   }
 
   unRegisterAll(): void {
-    this.eventHandlers = {};
+    this._eventHandlers = {};
   }
 
   notify(event: any): void {
     const eventName = event.constructor.name;
-    if (this.eventHandlers[eventName]) {
-      this.eventHandlers[eventName].forEach((handler) => {
+    if (this._eventHandlers[eventName]) {
+      this._eventHandlers[eventName].forEach((handler) => {
         handler.handle(event);
       });
     }

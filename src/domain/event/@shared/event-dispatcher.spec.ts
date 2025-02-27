@@ -9,9 +9,9 @@ describe("Domain events tests", () => {
 
     eventDispatcher.register("ProductCreatedEvent", eventHandler);
 
-    expect(eventDispatcher.getEventHandlers["ProductCreatedEvent"]).toBeDefined();
-    expect(eventDispatcher.getEventHandlers["ProductCreatedEvent"].length).toBe(1);
-    expect(eventDispatcher.getEventHandlers["ProductCreatedEvent"][0]).toMatchObject(eventHandler);
+    expect(eventDispatcher.eventHandlers["ProductCreatedEvent"]).toBeDefined();
+    expect(eventDispatcher.eventHandlers["ProductCreatedEvent"].length).toBe(1);
+    expect(eventDispatcher.eventHandlers["ProductCreatedEvent"][0]).toMatchObject(eventHandler);
   });
 
   it("should unregister an event handler", () => {
@@ -19,11 +19,11 @@ describe("Domain events tests", () => {
     const eventHandler = new SendEmailWhenProductIsCreatedHandler();
 
     eventDispatcher.register("ProductCreatedEvent", eventHandler);
-    expect(eventDispatcher.getEventHandlers["ProductCreatedEvent"]).toBeDefined();
+    expect(eventDispatcher.eventHandlers["ProductCreatedEvent"]).toBeDefined();
 
     eventDispatcher.unregister("ProductCreatedEvent", eventHandler);
-    expect(eventDispatcher.getEventHandlers["ProductCreatedEvent"]).toBeDefined();
-    expect(eventDispatcher.getEventHandlers["ProductCreatedEvent"].length).toBe(0);
+    expect(eventDispatcher.eventHandlers["ProductCreatedEvent"]).toBeDefined();
+    expect(eventDispatcher.eventHandlers["ProductCreatedEvent"].length).toBe(0);
   });
 
   it("should unregister all event handlers", () => {
@@ -31,10 +31,10 @@ describe("Domain events tests", () => {
     const eventHandler = new SendEmailWhenProductIsCreatedHandler();
 
     eventDispatcher.register("ProductCreatedEvent", eventHandler);
-    expect(eventDispatcher.getEventHandlers["ProductCreatedEvent"]).toMatchObject(eventHandler);
+    expect(eventDispatcher.eventHandlers["ProductCreatedEvent"]).toMatchObject(eventHandler);
 
     eventDispatcher.unRegisterAll();
-    expect(eventDispatcher.getEventHandlers["ProductCreatedEvent"]).toBeUndefined();
+    expect(eventDispatcher.eventHandlers["ProductCreatedEvent"]).toBeUndefined();
   });
 
   it("should notify an event", () => {
@@ -45,7 +45,7 @@ describe("Domain events tests", () => {
     eventDispatcher.register("ProductCreatedEvent", eventHandler);
 
     expect(
-      eventDispatcher.getEventHandlers["ProductCreatedEvent"][0]
+      eventDispatcher.eventHandlers["ProductCreatedEvent"][0]
     ).toMatchObject(eventHandler);
 
     const productCreatedEvent = new ProductCreatedEvent({
@@ -55,7 +55,8 @@ describe("Domain events tests", () => {
       quantity: 10,
     });
 
-    // When notify is called, the event handler should be called
+    // When notify is called, the
+    // SendEmailWhenProductIsCreatedHandler.handle() should be called
     eventDispatcher.notify(productCreatedEvent);
 
     expect(spyEventHandler).toHaveBeenCalled();
