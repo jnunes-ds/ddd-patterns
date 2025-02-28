@@ -1,4 +1,3 @@
-
 import SendEmail1WhenCustomerIsCreatedHandler from "@domain/event/customer/handler/send-email-1-when-customer-is-created.handler";
 import CustomerCreatedEvent from "@domain/event/customer/customer-created.event";
 import EventDispatcher from "@domain/event/@shared/event-dispatcher";
@@ -56,6 +55,7 @@ describe("Customer created event tests", () => {
     const eventHandler2 = new SendEmail2WhenCustomerIsCreatedHandler();
     const spyEventHandler1 = jest.spyOn(eventHandler1, "handle");
     const spyEventHandler2 = jest.spyOn(eventHandler2, "handle");
+    const spyConsoleLog = jest.spyOn(console, "log").mockImplementation(() => {});
 
     eventDispatcher.register("CustomerCreatedEvent", eventHandler1);
     eventDispatcher.register("CustomerCreatedEvent", eventHandler2);
@@ -78,6 +78,8 @@ describe("Customer created event tests", () => {
 
     expect(spyEventHandler1).toHaveBeenCalled();
     expect(spyEventHandler2).toHaveBeenCalled();
+    expect(spyConsoleLog).toHaveBeenNthCalledWith(1, "Esse é o primeiro console.log do evento: CustomerCreated")
+    expect(spyConsoleLog).toHaveBeenNthCalledWith(2, "Esse é o segundo console.log do evento: CustomerCreated")
 
   });
 });
