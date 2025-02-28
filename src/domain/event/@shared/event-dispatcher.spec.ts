@@ -3,7 +3,7 @@ import SendEmailWhenProductIsCreatedHandler from "@domain/event/product/handler/
 import ProductCreatedEvent from "@domain/event/product/product-created.event";
 
 describe("Domain events tests", () => {
-  it("should register an evento handler", () => {
+  it("should register an event handler", () => {
     const eventDispatcher = new EventDispatcher();
     const eventHandler = new SendEmailWhenProductIsCreatedHandler();
 

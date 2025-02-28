@@ -1,7 +1,7 @@
 import EventDispatcherInterface from "@domain/event/@shared/event-dispatcher.interface";
 import EventHandlerInterface from "@domain/event/@shared/event-handler.interface";
 
-type EventHandlers = {[eventName: string]: EventHandlerInterface[]}
+type EventHandlers = Record<string, EventHandlerInterface[]>;
 
 export default class EventDispatcher implements EventDispatcherInterface {
 
