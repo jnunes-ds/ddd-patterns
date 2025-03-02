@@ -1,9 +1,9 @@
 import {Sequelize} from "sequelize-typescript";
 
-import OrderModel from "@infra/db/sequelize/model/order.model";
-import CustomerModel from "@infra/db/sequelize/model/customer.model";
-import OrderItemModel from "@infra/db/sequelize/model/order-item.model";
-import ProductModel from "@infra/db/sequelize/model/product.model";
+import OrderModel from "@infra/order/repository/sequelize/order.model";
+import CustomerModel from "@infra/customer/repository/sequelize/customer.model";
+import OrderItemModel from "@infra/order/repository/sequelize/order-item.model";
+import ProductModel from "@infra/product/repository/sequelize/product.model";
 
 import Customer from "@domain/customer/entity/customer";
 import Address from "@domain/customer/value-object/address";
@@ -11,8 +11,8 @@ import Product from "@domain/product/entity/product";
 import OrderItem from "@domain/checkout/entity/order_item";
 import Order from "@domain/checkout/entity/order";
 
-import ProductRepository from "./product.repository";
-import CustomerRepository from "./customer.repository";
+import ProductRepository from "../../../product/repository/sequelize/product.repository";
+import CustomerRepository from "../../../customer/repository/sequelize/customer.repository";
 import OrderRepository from "./order.repository";
 
 describe("Order Repository Unit tests", () => {
@@ -92,7 +92,7 @@ describe("Order Repository Unit tests", () => {
     customer.changeAddress(address);
     await customerRepository.create(customer);
 
-    // create product
+    // create order
     const productRepository = new ProductRepository()
     const product = new Product("p1", "Product 1", 10);
     await productRepository.create(product);
@@ -111,7 +111,7 @@ describe("Order Repository Unit tests", () => {
     const order = new Order("o1", customer.id, [orderItem]);
     await orderRepository.create(order);
 
-    //create new product
+    //create new order
     const newProduct = new Product("p2", "Product 2", 20);
     await productRepository.create(newProduct);
 
@@ -168,7 +168,7 @@ describe("Order Repository Unit tests", () => {
     customer.changeAddress(address);
     await customerRepository.create(customer);
 
-    // create product
+    // create order
     const productRepository = new ProductRepository()
     const product = new Product("p1", "Product 1", 10);
     await productRepository.create(product);
@@ -207,7 +207,7 @@ describe("Order Repository Unit tests", () => {
     customer.changeAddress(address);
     await customerRepository.create(customer);
 
-    // create product
+    // create order
     const productRepository = new ProductRepository()
     const product = new Product("p1", "Product 1", 10);
     await productRepository.create(product);
@@ -247,7 +247,7 @@ describe("Order Repository Unit tests", () => {
     customer.activate();
     await customerRepository.create(customer);
 
-    // create product
+    // create order
     const productRepository = new ProductRepository()
     const product1 = new Product("p1", "Product 1", 10);
     const product2 = new Product("p2", "Product 2", 20);
@@ -324,7 +324,7 @@ describe("Order Repository Unit tests", () => {
     await customerRepository.create(customer1);
     await customerRepository.create(customer2);
 
-    // create product
+    // create order
     const productRepository = new ProductRepository()
     const product1 = new Product("p1", "Product 1", 10);
     const product2 = new Product("p2", "Product 2", 20);

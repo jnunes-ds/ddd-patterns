@@ -1,5 +1,5 @@
 import {Sequelize} from "sequelize-typescript";
-import ProductModel from "@infra/db/sequelize/model/product.model";
+import ProductModel from "@infra/product/repository/sequelize/product.model";
 import Product from "@domain/product/entity/product";
 import ProductRepository from "./product.repository";
 
@@ -23,7 +23,7 @@ describe("Product Repository Unit tests", () => {
     if (sequelize) await sequelize.close();
   });
 
-  it("should create a product", async () => {
+  it("should create a order", async () => {
     const productRepository = new ProductRepository();
     const product = new Product("id123", "Product 1", 10);
 
@@ -39,7 +39,7 @@ describe("Product Repository Unit tests", () => {
     });
   });
 
-  it("should update a product", async () => {
+  it("should update a order", async () => {
     const productId = "id123";
 
     const productRepository = new ProductRepository();
@@ -69,7 +69,7 @@ describe("Product Repository Unit tests", () => {
     });
   });
 
-  it("should find a product", async () => {
+  it("should find a order", async () => {
     const productId = "id123";
 
     const productRepository = new ProductRepository();
