@@ -1,12 +1,23 @@
 export default class Address {
 
+    private _street: string;
+    private _number: number;
+    private _city: string;
+    private _state: string;
+    private _zipCode: string;
+
   constructor(
-    private _street: string,
-    private _number: number,
-    private _city: string,
-    private _state: string,
-    private _zipCode: string,
+    street: string,
+    number: number,
+    city: string,
+    state: string,
+    zipCode: string
   ) {
+    this._street = street;
+    this._number = number;
+    this._city = city;
+    this._state = state;
+    this._zipCode = zipCode;
     this.validate();
   }
 
