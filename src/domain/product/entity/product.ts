@@ -1,4 +1,6 @@
-export default class Product {
+import IProduct from "./product.interface";
+
+export default class Product implements IProduct {
   constructor(
     private _id: string,
     private _name: string,
