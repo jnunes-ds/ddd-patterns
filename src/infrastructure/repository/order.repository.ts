@@ -1,9 +1,9 @@
-import Order from "@domain/entity/order";
+import Order from "@domain/checkout/entity/order";
 import OrderModel from "@infra/db/sequelize/model/order.model";
 import OrderItemModel from "@infra/db/sequelize/model/order-item.model";
-import IOrderRepository from "@domain/repository/order-repository";
+import IOrderRepository from "@domain/checkout/repository/order-repository.interface";
 import {Promise} from "ts-toolbelt/out/Any/Promise";
-import OrderItem from "@domain/entity/order_item";
+import OrderItem from "@domain/checkout/entity/order_item";
 
 export default class OrderRepository implements IOrderRepository {
   async create(entity: Order): Promise<void> {

@@ -1,6 +1,6 @@
-import IProductRepository from "@domain/repository/product-repository";
+import IProductRepository from "@domain/product/repository/product-repository.interface";
 import {Promise} from "ts-toolbelt/out/Any/Promise";
-import Product from "@domain/entity/product";
+import Product from "@domain/product/entity/product";
 import ProductModel from "@infra/db/sequelize/model/product.model";
 
 export default class ProductRepository

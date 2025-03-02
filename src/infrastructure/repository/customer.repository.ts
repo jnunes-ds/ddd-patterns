@@ -1,6 +1,6 @@
-import ICustomerRepository from "@domain/repository/customer-repository";
-import Customer from "@domain/entity/customer";
-import Address from "@domain/entity/address";
+import ICustomerRepository from "@domain/customer/repository/customer-repository.interface";
+import Customer from "@domain/customer/entity/customer";
+import Address from "@domain/customer/value-object/address";
 import CustomerModel from "@infra/db/sequelize/model/customer.model";
 
 
