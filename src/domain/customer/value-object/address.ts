@@ -1,5 +1,4 @@
 export default class Address {
-
   constructor(
     private _street: string,
     private _number: number,
