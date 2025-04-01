@@ -1,10 +1,10 @@
 import {v4 as uuid} from "uuid";
-import OrderFactory from "@domain/checkout/factory/order.factory";
+import OrderFactory, {OrderFactoryProps} from "@domain/checkout/factory/order.factory";
 
 
 describe('Order factory unity tests', () => {
   it("should create an order", () => {
-    const orderProps = {
+    const orderProps: OrderFactoryProps = {
       id: uuid(),
       customerId: uuid(),
       items: [
