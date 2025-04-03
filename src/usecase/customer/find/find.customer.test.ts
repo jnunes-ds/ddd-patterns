@@ -24,7 +24,7 @@ describe("Find Customer use Case", () => {
     await sequelize.close();
   });
 
-  it("should find a customer", async () => {
+  test("if it find a customer", async () => {
     const customerRepository = new CustomerRepository();
     const usecase = new FindCustomerUsecase(customerRepository);
 
