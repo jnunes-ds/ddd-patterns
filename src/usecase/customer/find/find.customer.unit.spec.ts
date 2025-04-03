@@ -55,6 +55,6 @@ describe("Unit Test - Find Customer use Case", () => {
     }
 
 
-    await expect(usecase.execute(input)).rejects.toThrowErrorMatchingSnapshot("Customer not found");
+    await expect(usecase.execute(input)).rejects.toThrowError("Customer not found");
   })
 });
