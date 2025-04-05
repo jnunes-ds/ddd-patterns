@@ -41,6 +41,10 @@ describe("Integration Test - Find product use case", () => {
       id: product.id
     };
 
+    const wrongInput: InputFindProductDTO = {
+      id: "wrongId"
+    }
+
     const expecterOutput: OutputFindProductDTO = {
       id: product.id,
       name: product.name,
@@ -48,6 +52,8 @@ describe("Integration Test - Find product use case", () => {
     }
 
     const output = await usecase.execute(input);
+
     expect(output).toStrictEqual(expecterOutput);
+    expect(usecase.execute(wrongInput)).rejects.toThrowError("Product not found");
   });
 });
