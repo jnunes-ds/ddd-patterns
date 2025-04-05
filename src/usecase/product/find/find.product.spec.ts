@@ -31,4 +31,21 @@ describe("Unit Test - Find product use case", () => {
     const output = await usecase.execute(input);
     expect(output).toStrictEqual(expecterOutput);
   });
+
+  it("should throw an error when product is not found", async () => {
+    const productRepository = MockRepository();
+    const usecase = new FindProductUsecase(productRepository);
+
+    productRepository.find.mockImplementation(() => {
+      throw new Error("Customer not found");
+    });
+
+    const input: InputFindProductDTO = {
+      id: "id123",
+    };
+
+
+
+    expect(usecase.execute(input)).rejects.toThrowError("Customer not found");
+  });
 });
