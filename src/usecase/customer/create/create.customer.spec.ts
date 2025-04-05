@@ -18,7 +18,7 @@ const MockRepository = () => ({
   update: jest.fn(),
 });
 
-describe("Unit Test - Create Customer use Case", () => {
+describe("Unit Test - Create Customer Use Case", () => {
   it("should create a customer", async () => {
     const customerRepository = MockRepository();
     const usecase = new CreateCustomerUseCase(customerRepository);
