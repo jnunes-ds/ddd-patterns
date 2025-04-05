@@ -24,12 +24,16 @@ export default class ProductRepository
   }
 
   async find(id: string): Promise<Product> {
-    const productModel = await ProductModel.findOne({where: {id}});
-    return new Product(
-      productModel.id,
-      productModel.name,
-      productModel.price
-    );
+    try {
+      const productModel = await ProductModel.findOne({where: {id}});
+      return new Product(
+        productModel.id,
+        productModel.name,
+        productModel.price
+      );
+    } catch {
+      throw new Error("Product not found");
+    }
   }
   async findAll(): Promise<Product[]> {
     const productModels = await ProductModel.findAll();
