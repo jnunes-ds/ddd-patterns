@@ -10,7 +10,7 @@ describe("Product unity tests", () => {
   it("should throw error when name is empty", () => {
     expect(() => {
       new Product("123", "", 100);
-    }).toThrowError("name is required");
+    }).toThrowError("Name is required");
   });
 
   it("should throw error when price is empty", () => {
