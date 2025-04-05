@@ -5,7 +5,7 @@ import Customer from "@domain/customer/entity/customer";
 import Address from "@domain/customer/value-object/address";
 import FindCustomerUsecase from "./find.customer.usecase";
 
-describe("Find Customer use Case", () => {
+describe("Integration Tests - Find Customer use Case", () => {
   let sequelize: Sequelize;
 
   beforeEach(async () => {
@@ -24,7 +24,7 @@ describe("Find Customer use Case", () => {
     await sequelize.close();
   });
 
-  test("if it find a customer", async () => {
+  test("integration between find customer use case and customer repository", async () => {
     const customerRepository = new CustomerRepository();
     const usecase = new FindCustomerUsecase(customerRepository);
 
@@ -53,5 +53,6 @@ describe("Find Customer use Case", () => {
     const output = await usecase.execute(input);
 
     expect(output).toEqual(expectedOutput);
+    expect(usecase.execute(input)).rejects.toThrowError("Customer not found");
   });
 });
