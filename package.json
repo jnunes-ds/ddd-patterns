@@ -7,6 +7,7 @@
   "scripts": {
     "build": "rm -rf dist && npx swc src -d temp && mv temp/src dist/ && rm -rf temp",
     "start": "node index.js",
+    "dev": "nodemon src/infrastructure/api/server.ts",
     "test": "pnpm run tsc --noEmit && jest ./src",
     "tsc": "tsc"
   },
@@ -30,9 +31,13 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
+    "@types/express": "^5.0.1",
     "@types/uuid": "^10.0.0",
     "bindings": "^1.5.0",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
     "module-alias": "^2.2.3",
+    "nodemon": "^3.1.9",
     "reflect-metadata": "^0.2.2",
     "sequelize": "^6.37.5",
     "sequelize-typescript": "^2.1.6",
