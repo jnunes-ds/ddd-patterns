@@ -11,8 +11,8 @@ import Product from "@domain/product/entity/product";
 import OrderItem from "@domain/checkout/entity/order_item";
 import Order from "@domain/checkout/entity/order";
 
-import ProductRepository from "../../../product/repository/sequelize/product.repository";
-import CustomerRepository from "../../../customer/repository/sequelize/customer.repository";
+import ProductRepository from "@infra/product/repository/sequelize/product.repository";
+import CustomerRepository from "@infra/customer/repository/sequelize/customer.repository";
 import OrderRepository from "./order.repository";
 
 describe("Order Repository Unit tests", () => {
