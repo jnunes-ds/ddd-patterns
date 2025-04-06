@@ -37,4 +37,14 @@ describe('E2E Test - Customer', () => {
       }
     });
   });
+
+  it("should not create a customer with invalid data", async () => {
+    const response = await request(app)
+      .post("/api/customers")
+      .send({
+        name: "Jhon Doe",
+      });
+
+    expect(response.status).toBe(500);
+  });
 });
