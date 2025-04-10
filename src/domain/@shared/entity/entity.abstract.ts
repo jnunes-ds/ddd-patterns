@@ -2,7 +2,7 @@ import Notification from "@domain/@shared/notification/notification";
 
 export default abstract class Entity {
   protected _id: string;
-  protected readonly notification: Notification;
+  public readonly notification: Notification;
 
   constructor() {
     this.notification = new Notification();

@@ -51,7 +51,7 @@ describe("Integration Test - Create Product Use Case", () => {
       name: input.name,
       price: input.price,
     });
-    await expect(usecase.execute(iputWithoutName)).rejects.toThrowError("Name is required");
-    await expect(usecase.execute(inputWithoutPrice)).rejects.toThrowError("Price must be greater than 0");
+    await expect(usecase.execute(iputWithoutName)).rejects.toThrowError("product: name is required");
+    await expect(usecase.execute(inputWithoutPrice)).rejects.toThrowError("product: price must be greater than 0");
   });
 });

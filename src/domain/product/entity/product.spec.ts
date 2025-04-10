@@ -4,25 +4,25 @@ describe("Product unity tests", () => {
   it("should throw error when id is empty", () => {
     expect(() => {
       new Product("", "Product 1", 100);
-    }).toThrowError("Id is required");
+    }).toThrowError("product: id is required");
   });
 
   it("should throw error when name is empty", () => {
     expect(() => {
       new Product("123", "", 100);
-    }).toThrowError("Name is required");
+    }).toThrowError("product: name is required");
   });
 
   it("should throw error when price is empty", () => {
     expect(() => {
       new Product("123", "Product 1", -1);
-    }).toThrowError("product: Price must be greater than 0");
+    }).toThrowError("product: price must be greater than 0");
   });
 
   it("should throw a list of errors when more than one argument is incorrect", () => {
     expect(() => {
       new Product("", "", -1);
-    }).toThrowError("product: Id is required, product: Name is required, product: Price must be greater than 0");
+    }).toThrowError("product: id is required, product: name is required, product: price must be greater than 0");
   });
 
   it("should change name", () => {
