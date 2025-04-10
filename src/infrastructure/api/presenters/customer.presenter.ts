@@ -2,7 +2,7 @@ import {toXML, XmlOptions} from 'jstoxml';
 import {OutputListCustomerDTO} from "@usecase/customer/list/list.customer.dto";
 
 export default class CustomerPresenter {
-  static toXML(data: OutputListCustomerDTO): string {
+  static toListXML(data: OutputListCustomerDTO): string {
     const xmlOptions: XmlOptions = {
       header: true,
       indent: '  ',
