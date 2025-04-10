@@ -1,5 +1,6 @@
 import IProduct from "./product.interface";
 import Entity from "@domain/@shared/entity/entity.abstract";
+import ProductValidatorFactory from "@domain/product/factory/product.validator.factory";
 
 export default class Product  extends Entity implements IProduct {
   constructor(
@@ -25,18 +26,8 @@ export default class Product  extends Entity implements IProduct {
   }
 
   validate() {
-    if (!this._id) this.notification.addError({
-      context: "product",
-      message: "Id is required",
-    });
-    if (!this._name) this.notification.addError({
-      context: "product",
-      message: "Name is required",
-    });
-    if (!this._price || this._price < 0) this.notification.addError({
-      context: "product",
-      message: "Price must be greater than 0",
-    });
+    const validator = ProductValidatorFactory.create();
+    validator.validate(this);
   }
 
   changeName(name: string) {
