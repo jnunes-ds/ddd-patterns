@@ -6,14 +6,15 @@ export default class CustomerZodValidator implements IValidator<Customer> {
   validate(entity: Customer): void {
     try {
       z.object({
-        id: z.string().min(1, "Id is required").uuid("Invalid UUID format"),
-        name: z.string().min(3, "Name is required").max(255, "Name must be less than 255 characters"),
-      }).safeParse({
+        id: z.string().min(1, "id is required"),
+        name: z.string().min(3, "name is required"),
+      }).parse({
         id: entity.id,
         name: entity.name,
       })
     } catch (errors) {
       const e = errors as z.ZodError;
+      console.log("errors: ", JSON.stringify(e, null, 2));
       e.errors.forEach(error => {
         entity.notification.addError({
           context: "customer",
