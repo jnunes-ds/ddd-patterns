@@ -14,7 +14,7 @@ export default class CustomerZodValidator implements IValidator<Customer> {
       })
     } catch (errors) {
       const e = errors as z.ZodError;
-      console.log("errors: ", JSON.stringify(e, null, 2));
+
       e.errors.forEach(error => {
         entity.notification.addError({
           context: "customer",
