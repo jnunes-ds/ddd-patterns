@@ -53,6 +53,6 @@ describe("Unit Test - Create Product Use Case", () => {
 
     const output = usecase.execute(inputWithoutPrice);
 
-    await expect(output).rejects.toThrowError("Price must be grater than 0");
+    await expect(output).rejects.toThrowError("product: Price must be greater than 0");
   });
 });
