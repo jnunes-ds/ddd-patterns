@@ -52,7 +52,7 @@ describe("Customer unit tests", () => {
     expect(() => {
       const customer = new Customer("123", "John Doe");
       customer.activate();
-    }).toThrowError("Address is required");
+    }).toThrowError("customer: Address is required to activate customer");
   });
 
   it("Should deactivate customer", () => {
