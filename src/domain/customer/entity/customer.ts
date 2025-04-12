@@ -57,7 +57,13 @@ export default class Customer extends Entity {
   }
 
   activate() {
-    if (!this._address) throw new Error("Address is required");
+    if (!this._address) {
+      this.notification.addError({
+        context: "customer",
+        message: "Address is required to activate customer",
+      });
+      throw new NotificationError(this.notification.getErrors());
+    }
 
     this._active = true;
   }
